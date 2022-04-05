@@ -3,8 +3,6 @@ package com.company;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Main {
 
@@ -13,6 +11,7 @@ public class Main {
 
         FirefoxDriver driver = new FirefoxDriver();
         driver.get("https://www.tripadvisor.com/");
+
 
         WebElement button = driver.findElement(By.linkText("Hotels"));
         button.click();
@@ -24,20 +23,32 @@ public class Main {
         //element1.click();
         //element1.sendKeys("Switzer");
 
-        WebElement element1 = driver.findElement(By.cssSelector("div.weiIG:nth-child(1) > form:nth-child(2) > input:nth-child(1)"));
-        element1.click();
-        element1.sendKeys("Switzerland");
+        WebElement search = driver.findElement(By.cssSelector("body:nth-child(2) div.hrjYF:nth-child(4) div.weiIG.Z0.Wh.eoyKC.fRhqZ.eNLxe form.bmTdH.o > input.fhEMT._G.B-.z._J.Cj.R0:nth-child(1)"));
+        search.click();
+        search.sendKeys("Switzerland");
 
         Thread.sleep(5000);
 
         WebElement searchResult = driver.findElement(By.xpath("//div[@class='dPHgr']//div[@class='WlYyy diXIH bQCoY'][contains(text(),'Europe')]"));
         searchResult.click();
 
-        WebElement selectCheckInDate = driver.findElement(By.cssSelector("#BODY_BLOCK_JQUERY_REFLOW > div.cBtAm.Za.f.e > div:nth-child(2) > div > div:nth-child(2) > div > div > div > div.kAgrN > div > div.fZVmW.q.c > div:nth-child(2) > div.nZEkx.notranslate > div:nth-child(1) > div:nth-child(3)"));
-        selectCheckInDate.click();
+        Thread.sleep(3000);
 
-        WebElement selectCheckOutDate = driver.findElement(By.cssSelector("#BODY_BLOCK_JQUERY_REFLOW > div.cBtAm.Za.f.e > div:nth-child(2) > div > div:nth-child(2) > div > div > div > div.eLjPa > div > div.fZVmW.q.c > div:nth-child(1) > div.nZEkx.notranslate > div:nth-child(2) > div:nth-child(5)"));
-        selectCheckOutDate.click();
+        /*WebElement checkInDate = driver.findElement(By.cssSelector("body.rebrand_2017.js_logging.desktop_web.Hotels:nth-child(2) div.cBtAm.Za.f.e:nth-child(5) div.RGOTE._T.R2.f.e div.pCSDn div.zZROx div.ckcwd div.kAgrN div.dKBct.V div.fZVmW.q.c div.eMrph:nth-child(1) div.nZEkx.notranslate div.fylXE:nth-child(3) > div.fgeHy.Vt.Z1:nth-child(2)"));
+        checkInDate.click();*/
+
+        WebElement checkInDate = driver.findElement(By.xpath("//div[contains(@aria-label,'Mon Sep 12 2022')]"));
+        checkInDate.click();
+
+        Thread.sleep(3000);
+
+        /*WebElement checkOutDate = driver.findElement(By.cssSelector("body.rebrand_2017.js_logging.desktop_web.Hotels:nth-child(2) div.cBtAm.Za.f.e:nth-child(5) div.RGOTE._T.R2.f.e div.pCSDn div.zZROx div.ckcwd div.kAgrN div.dKBct.V div.fZVmW.q.c div.eMrph:nth-child(1) div.nZEkx.notranslate div.fylXE:nth-child(3) > div.fgeHy.Vt.Z1:nth-child(4)"));
+        checkOutDate.click();*/
+
+        WebElement checkOutDate = driver.findElement(By.xpath("//div[contains(@aria-label,'Wed Sep 14 2022')]"));
+        checkOutDate.click();
+
+        Thread.sleep(3000);
 
         WebElement childSelect = driver.findElement(By.cssSelector("#BODY_BLOCK_JQUERY_REFLOW > div.cBtAm.Za.f.e > div:nth-child(2) > div > div:nth-child(2) > div.ccWaH.S4.z > div:nth-child(3) > div.fiDyZ._m.c.q.B1.Z.R2 > button:nth-child(3) > span"));
         childSelect.click();
@@ -61,6 +72,8 @@ public class Main {
         WebElement getTitle = driver.findElement(By.cssSelector("#property_264882"));
         getTitle.getText();
         System.out.println(getTitle.getText());
+
+        driver.quit();
 
     }
 }
